@@ -8,12 +8,16 @@ use strict;
 
 # open LOG, ">>/home/appppr/public_html/cgi-bin/gco.txt";
 
-my $ivc = new WWW::InventoryClerk::API( AccountSid => 'bla',
+# todo: AuthId=apikey, AuthToken=secret
+
+my $ivc = new WWW::InventoryClerk::API( AuthId => 'bla',
 										AuthToken  => 'bla' );
+
+# todo: namespace=booking, method=show
 
 my $response = $ivc->GET('Booking');
 
-print $response->{content};
+print $response->{content}; # json
 
 # print LOG "";
 

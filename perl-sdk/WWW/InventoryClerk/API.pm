@@ -7,7 +7,10 @@ use Crypt::SSLeay ();
 use LWP::UserAgent ();
 use URI::Escape 'uri_escape';
 
-sub API_URL { 'https://inventoryclerk.com/api' }
+sub API_URL { 'https://www.inventoryclerk.com/dcal/api/v1' }
+
+my %auth_id = ();
+my %auth_token = ();
 
 sub new {
 	my $class = shift;
@@ -15,6 +18,7 @@ sub new {
 	
 	my $self = bless \(my $ref), $class;
 	
+	$auth_id{$self} = $args{AuthId} || '';
 	$auth_token{$self} = $args{AuthToken} || '';
 	
 	return $self;
@@ -42,7 +46,7 @@ sub _do_request {
 	}
 	
 	my $req = HTTP::Request->new($method => $url);
-	$req->authorization_basic($auth_token{$self});
+	$req->authorization_basic($auth_id{$self}, $auth_token{$self});
 	if( $content && $method ne 'GET' ) {
 		$req->content_type( 'application/x-www-form-urlencoded' );
 		$req->content($content);
