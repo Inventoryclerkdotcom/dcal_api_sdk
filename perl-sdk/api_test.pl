@@ -17,11 +17,10 @@ my $ivc = new WWW::InventoryClerk::API( AuthId => 'bla',
 
 # todo: namespace=booking, method=show
 
-# print qq~Content-type: text/html\r\n\r\n~;
-# print qq~Content-type: text/plain\r\n\r\n~;
-
 my $response = $ivc->GET('Booking');
 
+# print qq~Content-type: text/html\r\n\r\n~;
+# print qq~Content-type: text/plain\r\n\r\n~;
 print $response->{content}; # json
 
 # print LOG "";
