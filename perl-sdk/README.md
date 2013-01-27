@@ -17,3 +17,8 @@ PLAN
 v1 - Support private landlord bookings
 v2 - Support all customer logins
 
+Developer Contact
+=================
+
+Luke Burgess
+luke@lukestyle.com
